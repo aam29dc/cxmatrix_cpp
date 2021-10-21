@@ -12,29 +12,8 @@ namespace cxm {
 		T* _data;
 		static unsigned int _count;
 	public:
-		Matrix(const unsigned int rows = 1, const unsigned int cols = 1, const T x = 0) : _rows(rows), _cols(cols) {
-			static_assert(
-				sizeof(T) == sizeof(int) || sizeof(T) == sizeof(float) || sizeof(T) == sizeof(double) || sizeof(T) == sizeof(long long),
-				"Unsupported Matrix type."
-				);
-
-			_data = new T[_rows * _cols];
-
-			for (unsigned int i = 0; i < _rows * _cols; i++) {
-				_data[i] = x;
-			}
-
-			Matrix<T>::_count++;
-		}
-
-		~Matrix() {
-			_rows = _cols = 0;
-			if (_data != nullptr) {
-				delete[] _data;
-			}
-			Matrix<T>::_count--;
-		}
-
+		Matrix(const unsigned int rows = 1, const unsigned int cols = 1, const T x = 0);
+		~Matrix();
 		Matrix(const Matrix<T>& X);
 		Matrix(Matrix<T>&& move) noexcept;
 

@@ -3,6 +3,31 @@
 using namespace cxm;
 
 template <typename T>
+Matrix(const unsigned int rows, const unsigned int cols, const T x) : _rows(rows), _cols(cols) {
+	static_assert(
+		sizeof(T) == sizeof(int) || sizeof(T) == sizeof(float) || sizeof(T) == sizeof(double) || sizeof(T) == sizeof(long long),
+		"Unsupported Matrix type."
+		);
+
+	_data = new T[_rows * _cols];
+
+	for (unsigned int i = 0; i < _rows * _cols; i++) {
+		_data[i] = x;
+	}
+
+	Matrix<T>::_count++;
+}
+
+template <typename T>
+~Matrix() {
+	_rows = _cols = 0;
+	if (_data != nullptr) {
+		delete[] _data;
+	}
+	Matrix<T>::_count--;
+}
+
+template <typename T>
 Matrix<T>::Matrix(const Matrix<T>& X) {
 	_data = new T[X.getRows() * X.getCols()];
 	_rows = X.getRows();
