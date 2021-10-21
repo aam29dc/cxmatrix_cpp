@@ -1,5 +1,7 @@
 #include "cxm.h"
 
+/* AUTHOR: aam29dc@gmail.com */
+
 using namespace cxm;
 
 template <typename T>

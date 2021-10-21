@@ -1,3 +1,5 @@
+/* AUTHOR: aam29dc@gmail.com */
+
 #ifndef CXM_H
 #define CXM_H
 
